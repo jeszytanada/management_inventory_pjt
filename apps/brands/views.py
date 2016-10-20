@@ -25,14 +25,14 @@ class BrandListView(ListView):
 
 class BrandDetailView(DetailView):
     model = Brand
-    template_name = 'brand_detail.html'
+    template_name = 'brands/brand_detail.html'
 
 
 class BrandCreate(CreateView):
     model = Brand
-    template_name = 'brand_add.html'
+    template_name = 'brands/brand_add.html'
     form_class = BrandForm
-    success_url = reverse_lazy('brand_list')
+    success_url = reverse_lazy('brands:brand_list')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -43,14 +43,14 @@ class BrandCreate(CreateView):
             return super(BrandCreate, self).form_valid(form)
         else:
             form = BrandForm()
-            return render(self, 'brand_add.html', {'form': form})
+            return render(self, 'brands/brand_add.html', {'form': form})
 
 
 class BrandEdit(UpdateView):
     model = Brand
-    template_name = 'brand_edit.html'
+    template_name = 'brands/brand_edit.html'
     form_class = BrandForm
-    success_url = reverse_lazy('brand_list')
+    success_url = reverse_lazy('brands:brand_list')
 
     def form_valid(self, form):
         if form.is_valid():
@@ -61,13 +61,13 @@ class BrandEdit(UpdateView):
             return super(BrandEdit, self).form_valid(form)
         else:
             form = BrandForm()
-            return render(self, 'brand_edit.html', {'form': form})
+            return render(self, 'brands/brand_edit.html', {'form': form})
 
 
 class BrandDelete(DeleteView):
     model = Brand
-    template_name = 'brand_delete.html'
-    success_url = reverse_lazy('brand_list')
+    template_name = 'brands/brand_delete.html'
+    success_url = reverse_lazy('brands:brand_list')
 
     def delete(self, *args, **kwargs):
         self.object = self.get_object()
