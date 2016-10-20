@@ -3,14 +3,14 @@ from . import views
 
 app_name = 'products'
 urlpatterns = [
-    # List pjt_inventory/product_list
+    # List /list
     url(r'^list', views.ProductListView.as_view(), name='product_list'),
-    # Details pjt_inventory/27/product_detail
+    # Details /27/detail
     url(r'^(?P<pk>[0-9]+)/detail/$', views.ProductDetailView.as_view(), name='product_detail'),
-    # /pjt_inventory/product_add
+    # /add
     url(r'^add/$', views.ProductCreate.as_view(), name='product_add'),
-    # /pjt_inventory/27/product_edit
+    # /27/edit
     url(r'^(?P<pk>[0-9]+)/edit/$', views.ProductEdit.as_view(), name='product_edit'),
-    # /pjt_inventory/27/product_delete
+    # /27/delete
     url(r'^(?P<pk>[0-9]+)/delete/$', views.ProductDelete.as_view(), name='product_delete'),
 ]

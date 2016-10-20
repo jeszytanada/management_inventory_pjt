@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^products/', include('products.urls')),
     url(r'^suppliers/', include('suppliers.urls')),
     url(r'^category/', include('category.urls')),
+    url(r'^stocks/', include('stocks.urls')),
     url(r'^admin/', admin.site.urls),
 ]

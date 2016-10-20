@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br />
+{% if stock_adjustment_list %}
+<ul>
+    {% for stock in stock_adjustment_list %}
+        <li><a href="{% url 'stocks:stock_detail' stock.id %}">{{ supplier.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No stock records available.</p>
+{% endif %}
+{% endblock content %}

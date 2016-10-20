@@ -3,20 +3,20 @@ from . import views
 
 app_name = 'suppliers'
 urlpatterns = [
-    # List pjt_inventory/supplier_list
+    # List /list
     url(r'^list', views.SupplierListView.as_view(), name='supplier_list'),
-    # Details pjt_inventory/27/supplier_detail
+    # Details /27/detail
     url(r'^(?P<pk>[0-9]+)/detail/$', views.SupplierDetailView.as_view(), name='supplier_detail'),
-    # /pjt_inventory/supplier_add
+    # /add
     url(r'^add/$', views.SupplierCreate.as_view(), name='supplier_add'),
-    # /pjt_inventory/27/supplier_edit
+    # /27/edit
     url(r'^(?P<pk>[0-9]+)/edit/$', views.SupplierEdit.as_view(), name='supplier_edit'),
-    # /pjt_inventory/27/supplier_delete
+    # /27/delete
     url(r'^(?P<pk>[0-9]+)/delete/$', views.SupplierDelete.as_view(), name='supplier_delete'),
-    # List pjt_inventory/supplier_contact_list
+    # List /contact_list
     url(r'^(?P<pk>[0-9]+)/contact_list', views.SupplierContactListView.as_view(), name='supplier_contact_list'),
-    # /pjt_inventory/supplier_contact_add
+    # /contact_add
     url(r'^supplier_contact_add/$', views.SupplierContactCreate.as_view(), name='supplier_contact_add'),
-    # /pjt_inventory/27/supplier_contact_edit
+    # /27/contact_edit
     url(r'^(?P<pk>[0-9]+)/contact_edit/$', views.SupplierContactEdit.as_view(), name='supplier_contact_edit'),
 ]
