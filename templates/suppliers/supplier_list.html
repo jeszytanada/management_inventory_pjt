@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<br />
+{% if supplier_list %}
+<ul>
+    {% for supplier in supplier_list %}
+        <li><a href="{% url 'suppliers:supplier_detail' supplier.id %}">{{ supplier.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No supplier are available.</p>
+{% endif %}
+{% endblock content %}

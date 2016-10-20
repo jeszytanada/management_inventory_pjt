@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ brand.name }}
+    <a class="btn btn-default btn-sm" href="{% url 'brands:brand_edit' brand.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+</h1>
+    <table>
+        <tr>
+            <th>Properties:</th>
+            <th>Value:</th>
+        <tr>
+            <td> Name: </td>
+            <td> {{ brand.name }} </td>
+        </tr>
+        <tr>
+            <td> Description: </td>
+            <td> {{ brand.desc }} </td>
+        </tr>
+        <tr>
+            <td>  is_active: </td>
+            <td> {{ brand.is_active }} </td>
+        </tr>
+        <tr>
+            <td> Date Created: </td>
+            <td> {{ brand.date_created | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Date Updated: </td>
+            <td> {{ brand.date_updated | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Date Published: </td>
+            <td> {{ brand.date_publish | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Modified By: </td>
+            <td> {{ brand.modified_by }} </td>
+        </tr>
+    </table>
+    <br />
+<a class="body" href="{% url 'brands:brand_list' %}">Back</a>
+{% endblock content %}

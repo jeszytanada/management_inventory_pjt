@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ supplier.name }}
+    <a class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_edit' supplier.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_contact_list' supplier.id %}"><span class="glyphicon glyphicon-user"></span></a>
+</h1>
+    <table>
+        <tr>
+            <th>Properties:</th>
+            <th>Value:</th>
+        <tr>
+            <td> Name: </td>
+            <td> {{ supplier.name }} </td>
+        </tr>
+        <tr>
+            <td> Phone: </td>
+            <td> {{ supplier.phone }} </td>
+        </tr>
+        <tr>
+            <td>  Fax: </td>
+            <td> {{ supplier.fax }} </td>
+        </tr>
+        <tr>
+            <td> Email: </td>
+            <td> {{ supplier.email }} </td>
+        </tr>
+        <tr>
+            <td> Address: </td>
+            <td> {{ supplier.address }} </td>
+        </tr>
+        <tr>
+            <td> State: </td>
+            <td> {{ supplier.state }} </td>
+        </tr>
+        <tr>
+            <td> Country: </td>
+            <td> {{ supplier.country }} </td>
+        </tr>
+        <tr>
+            <td> Zipcode: </td>
+            <td> {{ supplier.zipcode }} </td>
+        </tr>
+        <tr>
+            <td>  is_active: </td>
+            <td> {{ supplier.is_active }} </td>
+        </tr>
+        <tr>
+            <td> Date Created: </td>
+            <td> {{ supplier.date_created | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Date Updated: </td>
+            <td> {{ supplier.date_updated | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Modified By: </td>
+            <td> {{ supplier.modified_by }} </td>
+        </tr>
+    </table>
+    <br />
+<a class="body" href="{% url 'suppliers:supplier_list' %}">Back</a>
+{% endblock content %}

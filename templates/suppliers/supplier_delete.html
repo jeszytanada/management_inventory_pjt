@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Delete Supplier Contact?</h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <h3>Are you sure you want to delete Supplier "{{ object }}" Contact?</h3>
+    <input type="submit" value="Yes" />
+</form>
+
+
+{% if error_message3 %}
+    <p>
+        <strong>{{ error_message3 }}</strong>
+    </p>
+{% endif %}
+<a class="body" href="{% url 'suppliers:supplier_list' %}">Cancel</a>
+{% endblock %}

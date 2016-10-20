@@ -1,0 +1,118 @@
+body {
+    padding-left: 15px;
+}
+h1 a, span{
+    color: #000000;
+    font-family: 'Lobster';
+}
+.page-header {
+    background-color: #FF9893;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active{
+    color: #ffffff;
+    font-size: 27pt;
+    text-decoration: none;
+    font-style:bold;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+.padding-head {
+    padding: 5px 0px 1px 5px;
+    border: 1px solid black;
+    background-color: #FF9893;
+    margin-bottom: 1000px;
+}
+/* Table */
+table {
+    font-family: arial;
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid black;
+}
+td, th {
+    border-bottom: 1px solid #ddd;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 3px;
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    color: #000000;
+    font-family: 'Lobster';
+}
+
+tr:nth-child(odd) {
+    background-color: #CCCCCC;
+}
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 10;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #db665a;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #FF9893;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #FF9893;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

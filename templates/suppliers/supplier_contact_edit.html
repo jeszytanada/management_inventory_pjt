@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Edit Supplier Contact:</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="submit-link-row">{{ field.label_tag }} {{ field }}
+        {% if form.errors %}
+            {% for error in field.errors %}
+                <strong>{{ error|escape }}</strong>
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    <input type="submit" value="Update" />
+</form>
+
+
+{% if error_message3 %}
+    <p>
+        <strong>{{ error_message3 }}</strong>
+    </p>
+{% endif %}
+<a class="body" href="{% url 'suppliers:supplier_list' %}">Cancel</a>
+{% endblock %}

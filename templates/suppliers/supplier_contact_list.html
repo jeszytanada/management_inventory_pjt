@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_contact_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<br />
+{% if supplier_contact_list %}
+    {% for contact in supplier_contact_list %}
+        <h3>
+            {{ contact.first_name }} {{ contact.last_name }}
+            <a class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_contact_edit' contact.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        </h3>
+        <ul>
+            <li>Email:		{{ contact.email }} </li>
+            <li>Phone No.:	{{ contact.phone }} </li>
+            <li>Fax No.:	{{ contact.fax }} </li>
+            <li>Mobile: 	{{ contact.mobile }} </li>
+            <li>Department: {{ contact.dept }} </li>
+            <li>Notes:		{{ contact.notes }} </li>
+            <li>Date Added:	{{ contact.date_created }} </li>
+            <li>Date Updated:	{{ contact.date_updated }} </li>
+            <li>Modified by:	{{ contact.modified_by }} </li>
+         </ul>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No supplier contacts available.</p>
+{% endif %}
+<a class="body" href="{% url 'suppliers:supplier_list' %}">Back</a>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>More Categories:</h4>
+{% if category_sub_list %}
+<ul>
+    {% for sub in category_sub_list %}
+        <li>
+            <a class="btn btn-default btn-sm" href="{% url 'category:category_edit' sub.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{% url 'category:category_product' sub.id %}">{{ sub.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No Sub-Category for this Category.</p>
+{% endif %}
+<hr>
+<h4>Products:</h4>
+{% if category_products %}
+    <ul>
+    {% for product in category_products %}
+        <li><a href="{% url 'products:product_detail' product.id %}">{{ product.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Product for this Category.</p>
+{% endif %}
+<hr>
+<a class="body" href="{% url 'category:category_list' %}">Back</a>
+<hr>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-default btn-sm" href="{% url 'category:category_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<br />
+{% if category_list %}
+<ul>
+    {% for category in category_list %}
+        <li>
+            <a class="btn btn-default btn-sm" href="{% url 'category:category_edit' category.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{% url 'category:category_sub_list' category.id %}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No Category available.</p>
+{% endif %}
+{% endblock content %}

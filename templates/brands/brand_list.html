@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-default btn-sm" href="{% url 'brands:brand_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<br />
+{% if brand_list %}
+<ul>
+    {% for brand in brand_list %}
+        <li><a href="{% url 'brands:brand_detail' brand.id %}">{{ brand.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No brands are available.</p>
+{% endif %}
+{% endblock content %}

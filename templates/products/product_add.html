@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Add Product</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="submit-link-row">
+            {{ field.label_tag }} {{ field }}
+            {% if field.name == 'brand' %}
+                <a target="_blank" class="btn btn-default btn-sm" href="{% url 'brands:brand_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            {% if field.name == 'supplier' %}
+                <a target="_blank" class="btn btn-default btn-sm" href="{% url 'suppliers:supplier_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            {% if field.name == 'category' %}
+                <a target="_blank" class="btn btn-default btn-sm" href="{% url 'category:category_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        {% if form.errors %}
+            {% for error in field.errors %}
+                <strong>{{ error|escape }}</strong>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    <input type="submit" value="Add" />
+</form>
+
+
+{% if error_message3 %}
+    <p>
+        <strong>{{ error_message3 }}</strong>
+    </p>
+{% endif %}
+<a class="body" href="{% url 'products:product_list' %}">Cancel</a>
+<t />
+{% endblock %}
