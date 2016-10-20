@@ -1,9 +1,7 @@
 .idea
-.idea/workspace.xml
 *.pyc
 __pycache__
 myvenv
 db.sqlite3
 /static
 .DS_Store
-apps/settings/settings.py
