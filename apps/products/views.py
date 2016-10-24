@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.db.models import Q
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from .models import Product
-from .forms import ProductForm
+from .forms import ProductForm, SearchForm
+import operator
 
 '''
     PRODUCTS
@@ -11,8 +13,32 @@ from .forms import ProductForm
 class ProductListView(ListView):
     template_name = 'products/product_list.html'
     context_object_name = 'product_list'
+    form_class = SearchForm
 
     def get_queryset(self):
+        return Product.objects.all()
+
+    # Manual Search Filter
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductListView, self).get_context_data(*args, **kwargs)
+        context['product_search_list'] = {
+            'form': SearchForm()
+        }
+        return context
+
+class ProductSearchListView(ListView):
+    template_name = 'products/product_search_list.html'
+    form_class = SearchForm
+    context_object_name = 'product_search_list'
+
+    def get_queryset(self):
+        form = self.form_class(self.request.GET)
+        if form.is_valid():
+            return Product.objects.filter(Q(name__icontains=form.cleaned_data['name']) | Q(barcode__icontains=form.cleaned_data['barcode']))
+            # if form.cleaned_data['name']:
+            #     return Product.objects.filter(name__icontains=form.cleaned_data['name'])
+            # if form.cleaned_data['barcode']:
+            #     return Product.objects.filter(barcode__icontains=form.cleaned_data['barcode'])
         return Product.objects.all()
 
 

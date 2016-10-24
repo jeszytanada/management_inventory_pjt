@@ -32,7 +32,6 @@
     <input type="submit" value="Add" />
 </form>
 
-
 {% if error_message3 %}
     <p>
         <strong>{{ error_message3 }}</strong>
@@ -40,4 +39,15 @@
 {% endif %}
 <a class="body" href="{% url 'products:product_list' %}">Cancel</a>
 <t />
+
+<script>
+     $(function() {
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          yearRange: "2015:2030",
+        });
+     });
+ </script>
+
 {% endblock %}

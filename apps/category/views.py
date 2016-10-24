@@ -15,7 +15,6 @@ class CategoryListView(ListView):
     context_object_name = 'category_list'
 
     def get_queryset(self):
-        #return Category.objects.filter(is_child=False).exclude(id=11)
         # Get all Category with None[11] as parent_id and exclude None from list
         return Category.objects.filter(parent_id=1).exclude(id=1)
 

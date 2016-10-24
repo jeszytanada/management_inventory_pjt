@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-default btn-sm" href="{% url 'products:product_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<br />
+
+{% if product_search_list %}
+<ul>
+    {% for product in product_search_list %}
+        <li><a href="{% url 'products:product_detail' product.id %}">{{ product.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No products are available.</p>
+{% endif %}
+{% endblock content %}

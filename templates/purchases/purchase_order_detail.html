@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ purchase.name }}
+</h1>
+    <table>
+        <tr>
+            <th>Properties:</th>
+            <th>Value:</th>
+        <tr>
+            <td> Supplier ID: </td>
+            <td> {{ purchase.reference }} </td>
+        </tr>
+        <tr>
+            <td> Total Cost: </td>
+            <td> {{ purchase.total_cost }} </td>
+        </tr>
+        <tr>
+            <td>  Status: </td>
+            <td> {{ purchase.status }} </td>
+        </tr>
+        <tr>
+            <td> Due date: </td>
+            <td> {{ purchase.date_due }} </td>
+        </tr>
+        <tr>
+            <td> Date Created: </td>
+            <td> {{ purchase.date_created | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Date Updated: </td>
+            <td> {{ purchase.date_updated | date:"Y-m-d H:i:s" }} </td>
+        </tr>
+        <tr>
+            <td> Created By: </td>
+            <td> {{ purchase.created_by }} </td>
+        </tr>
+        <tr>
+            <td> Modified By: </td>
+            <td> {{ purchase.modified_by }} </td>
+        </tr>
+    </table>
+    <br />
+<a class="body" href="{% url 'purchases:purchase_order_list' %}">Back</a>
+{% endblock content %}

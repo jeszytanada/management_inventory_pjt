@@ -47,7 +47,7 @@ class Product(models.Model):
     tags = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
-    date_publish = models.DateTimeField(blank=True, null=True)
+    date_publish = models.DateField(blank=True, null=True, verbose_name=('Publish Date'))
     modified_by = models.ForeignKey('auth.User', null=True)
 
     def publish(self):

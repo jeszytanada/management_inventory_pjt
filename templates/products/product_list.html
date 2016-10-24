@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<a class="btn btn-default btn-sm" href="{% url 'products:product_add' %}"><span class="glyphicon glyphicon-plus"></span></a>
+<a class="btn btn-default btn-sm" href="{% url 'products:product_add' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+</a>
 <br />
+<div class="search">
+<form id="searchform" action="{% url 'products:product_search_list' %}" method="GET">
+    {% csrf_token %}
+    {{ product_search_list.form.as_p }}
+    <button class="searchbutton" type="submit">
+       <i class="fa fa-search">Search</i>
+    </button>
+</form>
+
+<hr>
+<h3>All Products:</h3>
 {% if product_list %}
 <ul>
     {% for product in product_list %}
@@ -12,4 +25,8 @@
 {% else %}
     <p>No products are available.</p>
 {% endif %}
+<hr>
+<br />
+
+</div>
 {% endblock content %}

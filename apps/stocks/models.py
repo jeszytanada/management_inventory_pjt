@@ -3,21 +3,32 @@ from django.utils import timezone
 from products.models import Product
 
 class StocksAdjustment(models.Model):
+    BOOL_CHOICES = ((True, 'adding'), (False, 'removing'))
+    SA = 'Stock Adjustment'
+    PO = 'Purchase Order'
+    SO = 'Sales Order'
+    NO = 'None'
+    REFERENCE_CHOICES = (
+        (SA, 'Stock Adjustment'),
+        (PO, 'Purchase Order'),
+        (SO, 'Sales Order'),
+        (NO, 'None'),
+    )
 
+    reference_type = models.CharField(max_length=7, choices=REFERENCE_CHOICES, default=NO)
     reference = models.IntegerField(default=0, null=True)
-    reference_type = models.CharField(max_length=100)
     reason = models.TextField(blank=True, null=True)
-    type = models.IntegerField(default=0, null=True)
+    type = models.BooleanField(choices=BOOL_CHOICES, default=True)
     remarks = models.TextField(blank=True, null=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
     modified_by = models.ForeignKey('auth.User', null=True)
 
     def __unicode__(self):
-        return self.reference
+        return self.reference_type
 
     def __str__(self):
-        return self.reference
+        return self.reference_type
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in StocksAdjustment._meta.fields]

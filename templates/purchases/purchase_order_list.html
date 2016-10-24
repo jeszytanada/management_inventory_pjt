@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br />
+{% if purchase_order_list %}
+<ul>
+    {% for order in purchase_order_list %}
+        <li><a href="{% url 'purchases:purchase_order_detail' order.id %}">{{ order.supplier }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No purchase records available.</p>
+{% endif %}
+{% endblock content %}
