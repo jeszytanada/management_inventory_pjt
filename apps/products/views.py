@@ -34,11 +34,10 @@ class ProductSearchListView(ListView):
     def get_queryset(self):
         form = self.form_class(self.request.GET)
         if form.is_valid():
-            return Product.objects.filter(Q(name__icontains=form.cleaned_data['name']) | Q(barcode__icontains=form.cleaned_data['barcode']))
-            # if form.cleaned_data['name']:
-            #     return Product.objects.filter(name__icontains=form.cleaned_data['name'])
-            # if form.cleaned_data['barcode']:
-            #     return Product.objects.filter(barcode__icontains=form.cleaned_data['barcode'])
+            if form.cleaned_data['name']:
+                return Product.objects.filter(name__icontains=form.cleaned_data['name'])
+            if form.cleaned_data['barcode']:
+                return Product.objects.filter(barcode__icontains=form.cleaned_data['barcode'])
         return Product.objects.all()
 
 

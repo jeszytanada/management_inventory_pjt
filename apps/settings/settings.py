@@ -154,3 +154,7 @@ STATIC_URL = '/static/'
 # static settings
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (str(BASE_DIR.path('assets')),)
+
+# media settings
+MEDIA_ROOT = str(BASE_DIR.path('media'))
+MEDIA_URL = '/media/'
